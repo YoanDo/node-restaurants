@@ -4,5 +4,5 @@ exports.homePage = (req, res) => {
 }
 
 exports.addStore = (req, res) => {
-  res.render('editStore', { title: 'Add store' })
+  res.render('editStore', { title: '💩 Add store' })
 }

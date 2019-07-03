@@ -1,10 +1,18 @@
 mixin storeForm(store = {})
   form(action=`/add/${store._id || ''}` method="POST" class="card")
+    //- pre #{h.dump(store)}
     label(for="name") Name
     input(type="text" name="name" value=store.name)
     label(for="description") Description
     textarea(type="text" name="description") #{store.description}
-    //- when "-" means that we start JS in pug
+    //-  Adress, Long, Lat
+    label(for="address") Address
+    input(type="text", id="address" name="location[address]" value=((store.location && store.location.address)))
+    label(for="lng") Address Lng
+    input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]) required)
+    label(for="lat") Address Lat
+    input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]) required)
+    //- "-" means that we start JS in pug
     - const choices = ['Wifi', 'Open late', "Family friendly", "Vegetarian", "Licensed"]
     - const tags = store.tags || []
     ul.tags

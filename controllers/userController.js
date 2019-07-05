@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-// const User = mongoose.model('User');
+const User = mongoose.model('User');
+const promisify = require('es6-promisify') //Converts callback-based functions to ES6/ES2015 Promises
 
 
 exports.loginForm = (req, res) => {
@@ -31,3 +32,11 @@ exports.validateRegister = (req, res, next) => {
   }
   next(); // there were no errors!
 };
+
+exports.register = async (req, res, next) => {
+  const user = new User({ email: req.body.email, name: req.body.name });
+  const registerWithPromise = promisify(User.register, User);
+  await registerWithPromise(user, req.body.password);
+  res.send('it works!');
+  next(); //pass the authcontroller login
+}

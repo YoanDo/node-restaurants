@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const storeController = require('../controllers/storeController')
+const userController = require('../controllers/userController')
 
 const { catchErrors } = require('../handlers/errorHandlers');
 
@@ -21,5 +22,7 @@ router.post('/add/:id',
   catchErrors(storeController.resize),
   catchErrors(storeController.updateStore));
 // .../:id/... let us pass any id we want
+
+router.get('/login', userController.loginForm);
 
 module.exports = router;

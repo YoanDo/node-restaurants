@@ -5,9 +5,9 @@ mongoose.Promise = global.Promise;
 const md5 = require('md5');
 const validator = require('validator'); //validation package
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
-const passportLocalMongoose = require('password-local-mongoose'); //middleware that helps with logging stuff passportjs.io
+const passportLocalMongoose = require('passport-local-mongoose'); //middleware that helps with logging stuff passportjs.io
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,

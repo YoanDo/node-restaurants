@@ -87,3 +87,7 @@ exports.updateStore = async (req, res) => {
   res.redirect(`/stores/${store._id}/edit`);
   // Redriect them the store and tell them it worked
 };
+
+exports.getStoresByTag = async (req, res) => {
+  const stores = await Store.find()getTagsList()
+}

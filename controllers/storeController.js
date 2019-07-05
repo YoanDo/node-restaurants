@@ -89,7 +89,12 @@ exports.updateStore = async (req, res) => {
 };
 
 exports.getStoresByTag = async (req, res) => {
-  const tags = await Store.getTagsList();
   const tag = req.params.tag
-  res.render('tags', { title: 'Tags', tags, tag })
+  const tagQuery = tag || { $exists: true } // send me back the selected tag query OR all the stores
+  const tagsPromise = await Store.getTagsList();
+  const storesPromise = Store.find({ tags: tagQuery })
+  // await for multiple promise, instead of waiting for each one
+  const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
+  // res.json(tags)
+  res.render('tags', { title: 'Tags', tags, tag, stores });
 }

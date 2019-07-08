@@ -25,6 +25,7 @@ router.post('/add/:id',
 // .../:id/... let us pass any id we want
 
 router.get('/login', userController.loginForm);
+router.post('/login', authController.login);
 router.get('/register', userController.registerForm);
 
 router.post('/register',

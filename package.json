@@ -16,7 +16,7 @@
   },
   "browserslist": "last 2 versions",
   "dependencies": {
-    "axios": "0.15.3",
+    "axios": "0.21.1",
     "babel-preset-react-app": "^9.0.0",
     "body-parser": "1.17.1",
     "connect-flash": "0.1.1",
